@@ -22,6 +22,7 @@ protected:
 private:
 
 	//Capsule
+	//Forward Delcaration 
 	UPROPERTY()
 	class UCapsuleComponent* CapsuleComp;
 
