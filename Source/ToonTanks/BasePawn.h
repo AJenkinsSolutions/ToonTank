@@ -25,6 +25,15 @@ private:
 	//Forward Delcaration 
 	UPROPERTY()
 	class UCapsuleComponent* CapsuleComp;
+	UPROPERTY()
+	class UStaticMeshComponent* BaseMesh;
+	UPROPERTY()
+	class UStaticMeshComponent* TurrentMesh;
+	UPROPERTY()
+	class USceneComponent* ProjectileSpawnPoint;
+
+
+
 
 public:	
 	// Called every frame

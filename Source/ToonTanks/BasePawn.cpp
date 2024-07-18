@@ -9,10 +9,26 @@ ABasePawn::ABasePawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	//Create Capslue Component
-	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
+	
+	//todo: CreateCapslueComponent()
 	//Reassiging the root component
+	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
 	RootComponent = CapsuleComp;
+
+	//todo: ConstructMeshes&Attach() x3 
+	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
+	//BaseMesh->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform, NAME_None)
+	BaseMesh->SetupAttachment(CapsuleComp);
+	
+	TurrentMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turrent Mesh"));
+	TurrentMesh->SetupAttachment(BaseMesh);
+
+	//Projectile spawn point
+	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("SpawnPoint-Projectile"));
+	ProjectileSpawnPoint->SetupAttachment(TurrentMesh);
+
+
+
 }
 
 // Called when the game starts or when spawned
