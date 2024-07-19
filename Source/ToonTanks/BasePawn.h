@@ -15,18 +15,23 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
-	UPROPERTY(VisibleAnywhere)
-	int32 VisibleAnywhereInt = 12;
-
-	UPROPERTY(EditAnywhere)
-	int32 EditAnywhereInt =  24;
+	
 
 	UPROPERTY(VisibleInstanceOnly)
-	int32 VisibleInstanceOnly = 42;
+	int32 VisibleInstanceOnlyInt = 42;
+
+	UPROPERTY(VisibleDefaultsOnly)
+	int32 VisibleDefaultOnlyInt = 5;
 
 
+	UPROPERTY(EditDefaultsOnly)
+	int32 EditDefaultsOnlyInt = 9; 
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditInstanceOnly)
+	int32 EditInstanceOnlyInt = 14;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Speed = 400;
 
 	UPROPERTY(EditInstanceOnly)
@@ -40,15 +45,24 @@ private:
 
 	//Capsule
 	//Forward Delcaration 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="MyComponents", meta = (AllowPrivateAccess = "true"))
 	class UCapsuleComponent* CapsuleComp;
-	UPROPERTY()
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="MyComponents", meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* BaseMesh;
-	UPROPERTY()
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="MyComponents", meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* TurrentMesh;
-	UPROPERTY()
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="MyComponents", meta = (AllowPrivateAccess = "true"))
 	class USceneComponent* ProjectileSpawnPoint;
 
+	//Exposing to blueprints
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category= "MyCategory" , meta = (AllowPrivateAccess = "true"))
+	int32 VisibleAnywhereInt = 12;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "MyCategory" ,meta = (AllowPrivateAccess = "true"))
+	int32 EditAnywhereInt =  24;
 
 
 
