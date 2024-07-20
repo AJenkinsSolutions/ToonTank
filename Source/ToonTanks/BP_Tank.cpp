@@ -4,6 +4,7 @@
 #include "BP_Tank.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 
 ABP_Tank::ABP_Tank()
@@ -32,9 +33,12 @@ void ABP_Tank::Move(float Value)
     //UE_LOG(LogTemp, Log, TEXT("Move Value: %f"), Value);
     
     //Initialize Vector with all zeros
+
     FVector DeltaLocation = FVector::ZeroVector;
 
-    DeltaLocation.X = Value;
+    
+    // X = Value * DeltaTime * Speed
+    DeltaLocation.X = (Value * Speed) * UGameplayStatics::GetWorldDeltaSeconds(this);
     
     AddActorLocalOffset(DeltaLocation);
 }

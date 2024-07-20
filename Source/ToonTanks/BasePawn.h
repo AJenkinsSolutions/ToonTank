@@ -30,10 +30,6 @@ public:
 	UPROPERTY(EditInstanceOnly)
 	int32 EditInstanceOnlyInt = 14;
 
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Speed = 400;
-
 	UPROPERTY(EditInstanceOnly)
 	int32 AmmoLeft = 10;
 
@@ -57,12 +53,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="MyComponents", meta = (AllowPrivateAccess = "true"))
 	class USceneComponent* ProjectileSpawnPoint;
 
-	//Exposing to blueprints
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category= "MyCategory" , meta = (AllowPrivateAccess = "true"))
-	int32 VisibleAnywhereInt = 12;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category= "MyCategory" ,meta = (AllowPrivateAccess = "true"))
-	int32 EditAnywhereInt =  24;
+	
 
 
 
