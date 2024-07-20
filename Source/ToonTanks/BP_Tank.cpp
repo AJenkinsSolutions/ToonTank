@@ -29,5 +29,12 @@ void ABP_Tank::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 
 void ABP_Tank::Move(float Value)
 {
-    UE_LOG(LogTemp, Log, TEXT("Move Value: %f"), Value);
+    //UE_LOG(LogTemp, Log, TEXT("Move Value: %f"), Value);
+    
+    //Initialize Vector with all zeros
+    FVector DeltaLocation = FVector::ZeroVector;
+
+    DeltaLocation.X = Value;
+    
+    AddActorLocalOffset(DeltaLocation);
 }
