@@ -25,6 +25,7 @@ void ABP_Tank::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
     // Bind our move function to the move forward axis mapping
     //Param name of axis mapping 
     PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ABP_Tank::Move);
+    PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ABP_Tank::Turn);
 
 }
 
@@ -40,5 +41,21 @@ void ABP_Tank::Move(float Value)
     // X = Value * DeltaTime * Speed
     DeltaLocation.X = (Value * Speed) * UGameplayStatics::GetWorldDeltaSeconds(this);
     
-    AddActorLocalOffset(DeltaLocation);
+    AddActorLocalOffset(DeltaLocation, true);
 }
+
+void ABP_Tank::Turn(float Value)
+{
+    //UE_LOG(LogTemp, Log, TEXT("Turn Value: %f"), Value);
+    // FVector DeltaLocation = FVector::ZeroVector;
+
+    // AddActo
+    FRotator DeltaRotation = FRotator::ZeroRotator;
+    // yaw = value * deltatime * turnRate
+    DeltaRotation.Yaw = (Value * TurnRate) * UGameplayStatics::GetWorldDeltaSeconds(this);
+    
+    AddActorLocalRotation(DeltaRotation, true);
+
+    
+}
+
