@@ -25,5 +25,12 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="CamerRig", meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComp;
 	
+public:
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	
+	void Move(float Value);
 
 };
