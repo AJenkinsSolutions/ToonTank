@@ -38,6 +38,19 @@ void ABasePawn::BeginPlay()
 	
 }
 
+void ABasePawn::RotateTurret(FVector LookAtTarget)
+{	
+	//World space 
+	//Vector from turrent to trace hit result
+	//Destination - starting point
+	FVector ToTarget = LookAtTarget - TurrentMesh->GetComponentLocation();
+	//Init rotation
+	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
+	TurrentMesh->SetWorldRotation(LookAtRotation);
+
+
+}
+
 // Called every frame
 void ABasePawn::Tick(float DeltaTime)
 {
