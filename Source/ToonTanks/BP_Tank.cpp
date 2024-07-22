@@ -17,6 +17,12 @@ ABP_Tank::ABP_Tank()
 
 }
 
+void ABP_Tank::BeginPlay()
+{
+    PlayerControllerRef = Cast<APlayerController>(GetController());
+
+}
+
 void ABP_Tank::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
     //Good Practise to use SUPER so we use a parents version of the SetupPlayerComponent

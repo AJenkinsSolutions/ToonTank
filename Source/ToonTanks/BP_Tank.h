@@ -16,6 +16,14 @@ class TOONTANKS_API ABP_Tank : public ABasePawn
 
 public:
 	ABP_Tank();
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
+protected:
+
+	virtual void BeginPlay() override;
 	
 private:
 	
@@ -30,14 +38,19 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="Movement")
 	float TurnRate = 200.f;
-	
-public:
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	
 	void Move(float Value);
 	void Turn(float Value);
+
+	//Casting
+	APlayerController* PlayerControllerRef;
+
+
+	
+public:
+
+	
+	
 
 };

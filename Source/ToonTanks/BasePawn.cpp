@@ -31,12 +31,7 @@ ABasePawn::ABasePawn()
 
 }
 
-// Called when the game starts or when spawned
-void ABasePawn::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
+
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
 {	
