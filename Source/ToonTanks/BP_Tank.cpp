@@ -19,6 +19,9 @@ ABP_Tank::ABP_Tank()
 
 void ABP_Tank::BeginPlay()
 {
+    Super::BeginPlay();
+    
+
     PlayerControllerRef = Cast<APlayerController>(GetController());
 
 }
@@ -34,6 +37,67 @@ void ABP_Tank::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
     PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ABP_Tank::Turn);
 
 }
+
+void ABP_Tank::Tick(float DeltaTime)
+{
+    Super::Tick(DeltaTime);
+    UE_LOG(LogTemp, Log, TEXT("In TIck"));
+
+
+    if(PlayerControllerRef){
+        FHitResult HitResult;
+        PlayerControllerRef->GetHitResultUnderCursor(
+            ECollisionChannel::ECC_Visibility,
+            false,
+            HitResult);
+
+        UE_LOG(LogTemp, Log, TEXT("Impact Point %f"), HitResult.ImpactPoint.Y);
+        
+        DrawDebugSphere(
+        GetWorld(),
+        HitResult.ImpactPoint,
+        25.f,
+        12,
+        FColor::Cyan,
+        false,
+        -1.0f
+        );
+
+    }
+}
+
+// Called every frame
+// void ABP_Tank::Tick(float DeltaTime)
+// {
+// 	Super::Tick(DeltaTime);
+
+//     UE_LOG(LogTemp, Log, TEXT("In Tick"));
+    
+
+//     if(PlayerControllerRef){
+//         FHitResult HitResult;
+//         PlayerControllerRef->GetHitResultUnderCursor(
+//             ECollisionChannel::ECC_Visibility,
+//             false,
+//             HitResult);
+
+//         UE_LOG(LogTemp, Log, TEXT("Impact Point %f"), HitResult.ImpactPoint.Y);
+        
+//         DrawDebugSphere(
+//         GetWorld(),
+//         HitResult.ImpactPoint,
+//         25.f,
+//         12,
+//         FColor::Cyan,
+//         false,
+//         -1.0f
+//         );
+        
+       
+//     }
+    
+
+// }
 
 void ABP_Tank::Move(float Value)
 {
