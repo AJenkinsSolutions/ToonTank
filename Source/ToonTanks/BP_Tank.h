@@ -43,7 +43,7 @@ private:
 	void Move(float Value);
 	void Turn(float Value);
 
-	//Casting
+	//Reference to the Player controller to get inputs
 	APlayerController* PlayerControllerRef;
 
 
